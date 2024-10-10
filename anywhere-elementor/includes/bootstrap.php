@@ -20,6 +20,8 @@ class Plugin{
 
         add_action('wp_head', [ $this, 'wp_head'] );
 
+		add_filter('template_redirect', [ $this, 'block_template_frontend' ]);
+
     }
 
     private function includes(){
@@ -47,6 +49,14 @@ class Plugin{
             }
             </style>";
         echo $custom_css;
+    }
+
+	public function block_template_frontend()
+    {
+        if (is_singular('ae_global_templates') && ! current_user_can('edit_posts') ) {
+            wp_safe_redirect(site_url(), 301);
+            die;
+        }
     }
 }
 
