@@ -31,17 +31,29 @@ class Shortcode{
         if(!class_exists('Elementor\Plugin')){
             return '';
         }
+		
         if(!isset($atts['id']) || empty($atts['id'])){
             return '';
         }
 
         $post_id = $atts['id'];
 
-        if($language_support){
+		if($language_support){
             $post_id = apply_filters( 'wpml_object_id', $post_id, 'ae_global_templates' );
         }
 
-        $response = Plugin::instance()->frontend->get_builder_content_for_display($post_id);
+		$post = get_posts(
+			[
+				'post_type' => get_post_type($post_id),
+				'post__in' => [$post_id] 
+			]
+		);
+
+		if(!$post){
+			return '';
+		}
+
+        $response = Plugin::instance()->frontend->get_builder_content_for_display($post[0]->ID);
         return $response;
     }
 

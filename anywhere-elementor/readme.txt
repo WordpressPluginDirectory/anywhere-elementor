@@ -2,8 +2,8 @@
 Contributors: wpvibes, webtechstreet, tejwanihemant
 Tags: page-builder, elementor, elementor addon
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 1.2.11
+Tested up to: 6.8
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,8 +54,15 @@ Note: This plugin is an addon of [Elementor Page Builder](https://wordpress.org/
 
 == Changelog ==
 
+= 1.2.13
+* Tested with the latest WordPress and Elementor Release.
+
+= 1.2.12 =
+* Fixed : Security issue.
+* Tested with latest WordPress and Elementor Release for compatibility issue.
+
 = 1.2.11 =
-* Fixed : AE Templates were publicly accessible in some cases. 
+* Fixed : Open AE templates without log in
 * Tested with latest WordPress and Elementor Release for compatibility issue.
 
 = 1.2.10 =
